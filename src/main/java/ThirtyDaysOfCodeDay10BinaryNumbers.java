@@ -8,11 +8,11 @@ public class ThirtyDaysOfCodeDay10BinaryNumbers {
 
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(bufferedReader.readLine().trim());
 
         int resto = 0;
         int sum = 0;
-
-        int n = Integer.parseInt(bufferedReader.readLine().trim());
+        int max = 0;
         ArrayList<Integer> converted = new ArrayList<>();
 
         while (n > 0) {
@@ -25,12 +25,17 @@ public class ThirtyDaysOfCodeDay10BinaryNumbers {
 
         for (int i = 0; i < converted.size(); i++) {
             //System.out.print(converted.get(i));
-            while (converted.get(i).equals(1)) {
+            if (converted.get(i).equals(1)) {
                 sum += converted.get(i);
+                if(sum > max){
+                    max = sum;
+                }
+            } else {
+                sum = 0;
             }
         }
 
-        System.out.println(sum);
+        System.out.println(max);
 
         bufferedReader.close();
 
